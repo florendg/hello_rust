@@ -4,12 +4,11 @@ use rand::Rng;
 
 
 fn main() {
-    println!("Guess the number!");
+    println!("Raad het nummer!");
     let  secret_number = rand::thread_rng().gen_range(1,101);
 
-    println!("The secret number is {}.",secret_number);
     loop {
-        println!("Please input your guess.");
+        println!("Het nummer is?");
         let mut guess = String::new();
 
         io::stdin().read_line(&mut guess)
@@ -20,13 +19,13 @@ fn main() {
             Err(_) => continue,
         };
 
-        println!("You guessed: {}", guess);
+        println!("Je hebt {} gegokt", guess);
 
         match guess.cmp(&secret_number) {
-            Ordering::Less => println!("Too Small"),
-            Ordering::Greater => println!("Too Great"),
+            Ordering::Less => println!("Het getal is te klein"),
+            Ordering::Greater => println!("Het getal is te groot"),
             Ordering::Equal => {
-                println!("You Win");
+                println!("Je hebt gewonnen");
                 break;
             },
         }
